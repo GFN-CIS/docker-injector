@@ -1,12 +1,12 @@
 [build-system]
-requires = ["setuptools" ,"setuptools_scm[toml]"]
-build-backend = "setuptools.build_meta"
-
-[tool.setuptools_scm]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "my_package"
+name = "docker-injector"
 version = "0.1.0"
-description = "Example package"
+description = "Docker Injector"
+authors = ["Alexander MK <github-alex@xxl.cx>"]
 
 [tool.poetry.dependencies]
+python = "^3.11"
