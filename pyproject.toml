@@ -7,14 +7,14 @@ py-modules = []
 [project]
 dynamic = ["dependencies"]
 name = "docker-injector"
-version = "0.1.2"
+version = "0.1.3"
 
 [tool.setuptools.dynamic]
 dependencies = { file = ["requirements.txt"] }
 
 [tool.poetry]
 name = "docker-injector"
-version = "0.1.2"
+version = "0.1.3"
 description = "Docker Injector"
 authors = ["Alex MKX <github-alex@xxl.cx>"]
 readme = "readme.md"

@@ -6,7 +6,7 @@ import docker
 import logging
 import sys
 import re, time, signal
-import pydevd_pycharm
+
 
 logger = logging.getLogger('root')
 
