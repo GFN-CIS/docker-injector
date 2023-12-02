@@ -10,7 +10,7 @@ name = "docker-injector"
 version = "0.1.1"
 
 [tool.setuptools.dynamic]
-dependencies = {file = ["requirements.txt"]}
+dependencies = { file = ["requirements.txt"] }
 
 [tool.poetry]
 name = "docker-injector"
@@ -23,3 +23,7 @@ readme = "readme.md"
 [tool.poetry.scripts]
 docker-inject = 'docker_injector.inject:main'
 
+[tool.poetry.dependencies]
+python = "^3.8"
+docker = "^4.4.4"
+click = "^7.1.2"
