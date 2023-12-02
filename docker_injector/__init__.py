@@ -1,5 +1,6 @@
 import docker.models.containers
 import click
+from click.exceptions import MissingParameter
 import os, subprocess
 
 import docker
@@ -112,6 +113,8 @@ def shutdown_child(process: subprocess.Popen):
               help="The command to run in the namespace")
 def inject(label, require, ns, proc, cmd):
 
+    if label is None:
+        raise MissingParameter("Label is not specified")
     l = re.split("[:=]", label)
     name = l[0]
     if len(l) == 2:
@@ -119,7 +122,7 @@ def inject(label, require, ns, proc, cmd):
     else:
         value = None
     if ns is None:
-        raise RuntimeError("Namespaces are not specified")
+        raise MissingParameter("Namespaces are not specified")
     nslist = ns.split(',')
     client = docker.from_env()
     if value is None:
