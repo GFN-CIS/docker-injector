@@ -7,7 +7,6 @@ import logging
 import sys
 import re, time, signal
 
-
 logger = logging.getLogger('root')
 
 logger.setLevel(logging.INFO)  # set logger level
@@ -112,12 +111,15 @@ def shutdown_child(process: subprocess.Popen):
 @click.option("--cmd", prompt=False, default=lambda: os.environ.get("INJECTOR_CMD", None),
               help="The command to run in the namespace")
 def inject(label, require, ns, proc, cmd):
+
     l = re.split("[:=]", label)
     name = l[0]
     if len(l) == 2:
         value = l[1]
     else:
         value = None
+    if ns is None:
+        raise RuntimeError("Namespaces are not specified")
     nslist = ns.split(',')
     client = docker.from_env()
     if value is None:
@@ -153,3 +155,10 @@ def inject(label, require, ns, proc, cmd):
             return
     shutdown_child(process)
 
+
+def main():
+    inject()
+
+
+if __name__ == '__main__':
+    main()
