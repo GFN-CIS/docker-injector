@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import docker.models.containers
 import click
 import os, subprocess
@@ -154,10 +153,3 @@ def inject(label, require, ns, proc, cmd):
             return
     shutdown_child(process)
 
-
-if __name__ == '__main__':
-    try:
-        inject()
-    except Exception as e:
-        logger.exception(e)
-        sys.exit(1)
