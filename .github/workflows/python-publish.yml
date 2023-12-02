@@ -30,6 +30,15 @@ jobs:
       - name: Install Poetry
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
+      # Setup cache for Poetry
+      - name: Cache Poetry virtual env
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          # Use a unique key for each job and Python version to create a new cache file
+          key: ${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-poetry-
       - name: Install dependencies
         run: |
           poetry install
