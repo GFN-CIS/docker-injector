@@ -21,5 +21,5 @@ readme = "readme.md"
 
 
 [tool.poetry.scripts]
-docker-inject = 'inject:main'
+docker-inject = 'docker_injector.inject:main'
 
